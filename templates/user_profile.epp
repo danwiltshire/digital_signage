@@ -1,0 +1,5 @@
+# set PATH so it includes user's private bin directories
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Launch digital signage script
+/usr/bin/startx /etc/X11/Xsession /opt/ds_launcher.sh -- :0

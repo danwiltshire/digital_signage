@@ -1,0 +1,23 @@
+# Turn off DPMS (Display Power Management Signaling)
+xset -dpms
+
+# Disable screen saver blanking
+xset s off
+
+# Start openbox
+openbox-session &
+
+# Wait for openbox session to be created
+sleep 2
+
+# Ensure Chrome is always started
+while true; do
+  rm -rf ~/.{config,cache}/google-chrome/
+  (
+    while true; do
+      sleep <%= @refresh_interval %>
+      xdotool key "ctrl+F5"
+    done
+  ) &
+  chromium-browser --ignore-certificate-errors --kiosk --incognito --no-first-run --disable-infobars --disable-session-crashed-bubble --disable-translate '<%= @url %>'
+done

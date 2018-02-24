@@ -1,0 +1,4 @@
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin <%= @ds_username %> --noclear %I $TERM
+Type=idle
